@@ -59,8 +59,14 @@ label {
   padding-bottom: 10px;
 }
 
-h2 {
+h2,
+legend {
   font-size: 1.25em;
+}
+
+legend {
+  font-weight: bold;
+  padding: 20px 0;
 }
 
 button {
