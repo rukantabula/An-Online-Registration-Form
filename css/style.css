@@ -2,53 +2,78 @@
   Base Element Styles
 ==================================== */
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-::-webkit-input-placeholder { /* WebKit browsers */
-    direction: rtl;
-    font-style: italic;
-    font-size: .8em;
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  direction: rtl;
+  font-style: italic;
+  font-size: 0.8em;
+  overflow: visible;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    direction: rtl;
-    font-style: italic;
-    font-size: .8em;
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  direction: rtl;
+  font-style: italic;
+  font-size: 0.8em;
+  overflow: visible;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ but I'm not sure about working */
-    direction: rtl;
-    font-style: italic;
-    font-size: .8em;
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ but I'm not sure about working */
+  direction: rtl;
+  font-style: italic;
+  font-size: 0.8em;
+  overflow: visible;
 }
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-    direction: rtl;
-    font-style: italic;
-    font-size: .8em;
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  direction: rtl;
+  font-style: italic;
+  font-size: 0.8em;
+  overflow: visible;
 }
 
 body {
-  font-family: 'Roboto Slab', serif;
+  font-family: "Merriweather", serif;
   line-height: 1.6;
-	display: flex;
+  display: flex;
   color: #2d3945;
   background: #fff;
 }
 
-
-
 p {
   text-align: center;
+}
+p,
+label {
+  font-size: 0.9em;
+}
+
+label {
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.25em;
 }
 
 button {
   background: #4ebbb5;
   color: #fff;
-  padding: .625em 1.25em;
-	border-radius: .35em;
-  margin-top: 20px;
+  padding: 0.625em 1.25em;
+  border-radius: 0.35em;
+  margin: 0 10px 20px;
+  height: 60px;
+}
+
+button:hover {
+  opacity: 0.8;
 }
 
 input[type="text"],
@@ -57,9 +82,9 @@ input[type="email"],
 input[type="tel"],
 textarea,
 select {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border: none;
-  border-radius: .35em;
+  border-radius: 0.35em;
   font-size: 16px;
   height: auto;
   margin: 0;
@@ -71,6 +96,20 @@ select {
   margin-bottom: 30px;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+input[id="zip_code"] {
+  width: 50%;
+}
+
+.zip {
+  display: block;
+}
+
 input:focus,
 textarea:focus {
   border: 1px solid #46698b;
@@ -78,22 +117,15 @@ textarea:focus {
 
 input:placeholder {
   text-align: right;
-
+  overflow: visible;
 }
-
 
 /* =================================
   Base Layout Styles
 ==================================== */
 .wrapper {
-    margin: auto;
-}
-
-.main-content,
-form,
-fieldset {
-  display: flex;
-  flex-direction: column;
+  margin: auto;
+  width: 100%;
 }
 
 .primary-header {
@@ -103,26 +135,99 @@ fieldset {
   padding-bottom: 15px;
 }
 
-.secondary-header,
-.main-content {
-  margin: auto;
-  margin: 0 0 30px 0;
-  align-items: center;
-}
-
-.secondary-header {
-    text-align: center;
-}
-
 .header-title {
   font-size: 1.5em;
   text-align: center;
   color: #fff;
   text-transform: uppercase;
 }
-/* ---- Navigation ---- */
 
+.bold-line {
+  height: 4px;
+}
+
+.light-line {
+  height: 2px;
+}
+
+.bold-line,
+.light-line {
+  margin-bottom: 5px;
+  background: #2d3945;
+}
+
+.main-content,
+form,
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  width: 100%;
+}
+
+fieldset {
+  flex-wrap: wrap;
+}
+
+.secondary-header,
+.main-content {
+  margin: 0 0 30px 0;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.secondary-header {
+  text-align: center;
+}
+
+.header-description,
+.footer {
+  color: #a9a9a9;
+}
+
+.header-description {
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
+
+.contact,
+.newsletter {
+  padding-bottom: 20px;
+}
+.section-title {
+  padding-top: 20px;
+}
+
+.footer {
+  font-style: italic;
+  margin-bottom: 150px;
+}
 
 /* =================================
   Media Queries
 ==================================== */
+
+@media screen and (min-width: 768px) {
+  .secondary-header,
+  .main-content {
+    margin: 0 0 30px 0;
+    align-items: center;
+    width: 60%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .flex-input {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  input[id="zip_code"] {
+    margin-right: 33%;
+  }
+
+  .item-label {
+    width: 50%;
+  }
+}
